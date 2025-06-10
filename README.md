@@ -1,7 +1,12 @@
-# Programming Design and Implementation
-## Author - Sauban Kidwai
-## ID: 20748199
-## Curtin University Semester 1 2023
+# Synopsis
+
+**AUTHOR** : Sauban Kidwai
+
+**STUDENT ID** : 20748199
+
+**DESCRIPTION** : COMP1007 - Programming Design and Implementation (Semester 1 2023)
+
+<br>
 
 Designed and implemented a Java application that will allow users to interrogate data to understand Indigenous community infrastructure projects throughout the different Canadian provinces in 2023 based on the datasets from this link
 

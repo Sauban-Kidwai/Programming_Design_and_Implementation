@@ -1,0 +1,262 @@
+CLASS UserInput
+
+    PrintWriter filePrintwriter
+    PrintStream originalOut
+
+    CONSTRUCTOR UserInput
+
+        try:
+
+            filePrintwriter new PrintWriter output.txt
+
+        catch:
+
+            PRINT TO USER "Error"
+
+    END CONSTRUCTOR
+
+
+    METHOD: printToCOnsoleAndFile
+    IMPORT: text (String)
+    EXPORT: none
+
+    Assertion: When called, the method will print to a file and the terminal and then flush
+
+    Algorithm:
+
+        originalOut.println(text)
+        filePrintwriter.println(text)
+        filePrintwriter.flush()
+
+    END METHOD
+
+    METHOD: IntroUserInput
+    IMPORT: none
+    EXPORT: choice (Integer)
+
+    Assertion: When called, the method will print out the intro text to the user prompting them to make a choice while making sure no error occurs
+
+    Algorithm:
+    
+        output = ""
+
+        Scanner = new Scanner(System.in)
+
+        Project myProject = new Project()
+
+        myProject.readDataFromFile("First_Nation_Infrastructure_Investment.csv")
+
+        count = myProject.totalProjects()
+
+        choice = 0
+
+        try:
+            output += "\nWelcome to the Investments in Indigenous community infrastructure Program. There are a total of "
+                    + count + " projects throughout Canada. Please make a selection from the Menu below.\n\n"
+
+            Add to Output "> 1) All of Canda"
+            Add to Output "> 2) Alberta"
+            Add to Output "> 3) British Columbia"
+            Add to Output "> 4) Manitoba"
+            Add to Output "> 5) New Brunswick"
+            Add to Output "> 6) Newfoundland and Labrador"
+            Add to Output "> 7) Nova Scotia"
+            Add to Output "> 8) Ontario"
+            Add to Output "> 9) Prince Edward Island"
+            Add to Output  "> 10) Quebec"
+            Add to Output "> 11) Saskatchewan"
+            Add to Output "> 12) Northwest Territories"
+            Add to Output "> 13) Nunavut"
+            Add to Output "> 14) Yukon"
+            Add to Output "> 15) Exit Program"
+            Add to Output "> Answer: "
+
+            printToConsoleAndFile(output)
+
+            choice = scanner.nextInt()
+
+        catch Exception: 
+
+            Add to Output "Wrong Choice please try again"
+
+            sc.close()
+        
+
+        return choice;
+
+    END IntroUserInput
+
+
+    METHOD: AllOfCanada
+    IMPORT: none
+    EXPORT: none
+    
+    Assertion: when called, method will display the statistics for Canada
+
+    Algorithm:
+    
+        output = ""
+
+        Project myProject = new Project()
+
+        myProject.readDataFromFile("First_Nation_Infrastructure_Investment.csv")
+
+        count = myProject.totalProjects()
+        totOngoing = myProject.totalOngoing()
+        totComp = myProject.totalComp()
+        compPercentage = myProject.compPercentage()
+
+        Add to Output "You have selected All of Canada"
+
+        Add to Output "> The total number of projects in Canada: " + count
+
+        Add to Output "> The total number of Ongoing projects: " + totOngoing
+
+        Add to Output "> The total number of projects Completed: " + totComp
+
+        Add to Output "> The percentage of Completed Projects: " + compPercentage + " %"
+
+
+        printToConsoleAndFile(output)
+
+    END AllOfCanada
+
+
+
+    METHOD: OtherInput
+    IMPORT: selection (Integer)
+    EXPORT: choice (Integer)
+
+    Assertion: When called, the method will display statistics based off user selection and those statistics are called from the projetc class.
+
+    Algorithm:
+
+        output = ""
+        Scanner = new Scanner(System.in)
+
+        choice = 0
+
+        String[] towns = { "All of Canada", "Alberta", "British Columbia", "Manitoba", "New Brunswick",
+                "Newfoundland and Labrador", "Nova Scotia", "Ontario", "Prince Edward Island", "Quebec", "Saskatchewan",
+                "Northwest Territories", "Nunavut", "Yukon" }
+
+        townname = towns[selection - 1]
+
+        try:
+
+            Add to Output "Please make a choice from the statistics below for " + townname 
+
+            Add to Output "> 1) Number of projects"
+
+            Add to Output "> 2) Percentage of all projects located in this province/territory"
+
+            Add to Output "> 3) Total number and percentage of Ongoing projects"
+
+            Add to Output "> 4) Total number and percentage of Completed projects"
+
+            Add to Output "> 5) All of the above statistics"
+
+            Add to Output "> 6) Return to main menu"
+
+            Add to Output "> Answer: "
+
+            printToConsoleAndFile(output)
+
+
+            choice = scanner.nextInt();
+
+            Project myProject = new Project();
+            myProject.readDataFromFile("First_Nation_Infrastructure_Investment.csv");
+
+            START IF
+            
+                if choice == 1
+
+                    outputwo = ""
+
+                    count = myProject.countProjectsInProvince(townname)
+
+                    Add to outputwo " Number of projects in " + townname + " is " + count
+
+                    printToConsoleAndFile(outputwo)
+
+                else if choice == 2
+
+                    outputwo = "" 
+
+                    percentage = myProject.projectPercentage(townname)
+
+                    Add to outputwo " Percentage of all projects located in " + townname + " is " + percentage 
+
+                    printToConsoleAndFile(outputwo)
+
+                else if choice == 3
+
+                    outputwo = ""
+
+                    ongPercentage = myProject.ongoingPercentage(townname)
+
+                    ongNum = myProject.ongoingNumber(townname)
+
+                    Add to outputwo " Total number and percentage of Ongoing projects in " + townname + " is " + ongNum + " and " + ongPercentage + " %"
+
+                    printToConsoleAndFile(outputwo)
+
+
+                else if choice == 4
+                    outputwo = ""
+
+                    compPercentage = myProject.completedPercentage(townname)
+
+                    compNum = myProject.completedNumber(townname)
+
+                    Add to outputwo " Total number and percentage of Completed projects in " + townname + " is " + compNum + " and " + compPercentage + " %"
+
+                    printToConsoleAndFile(outputwo)
+
+                else if choice == 5
+
+                    outputwo = ""
+
+                    count = myProject.countProjectsInProvince(townname)
+
+                    percentage = myProject.projectPercentage(townname)
+
+                    ongPercentage = myProject.ongoingPercentage(townname)
+
+                    ongNum = myProject.ongoingNumber(townname)
+
+                    compPercentage = myProject.completedPercentage(townname)
+
+                    compNum = myProject.completedNumber(townname)
+
+                    Add to outputwo " Number of projects in " + townname + " is " + count
+
+                    Add to outputwo " Percentage of all projects located in " + townname + " is " + percentage
+
+                    Add to outputwo " Total number and percentage of Ongoing projects in " + townname + " is " + ongNum
+                            + " and " + ongPercentage + " %"
+
+                    Add to outputwo " Total number and percentage of Completed projects in " + townname + " is " + compNum + " and " + compPercentage + " %"
+
+                    printToConsoleAndFile(outputwo)
+
+
+                else
+                    choice = 6;
+             
+            END IF
+
+        catch Exception
+
+            Add to output "Wrong Choice please try again";
+
+            sc.close();
+        
+
+        return choice;
+
+    END OtherInput
+
+
+END UserInput CLASS

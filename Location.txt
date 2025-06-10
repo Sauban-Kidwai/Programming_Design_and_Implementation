@@ -1,0 +1,120 @@
+CLASS Project
+
+    CLASS FIELDS:
+
+        latitude (double [])
+        longitude (double [])
+        coordSys (String [])
+
+
+    ACCESSOR: readDataFromFile
+    IMPORT: filename (String)
+    EXPORT: none
+    Assertion: Method to read file and Parse contents to class fields.
+    Algorithm:
+
+        try:
+            theFile = OPENFILE filename
+            numRows = 0
+            READ Line FROM theFile
+            WHILENOT (theFile = EOF)
+                latitude = theFile[8]
+                longitude = theFile[9]
+                coordSys = theFile[10]
+
+                numRows = numRows + 1
+
+            ENDWHILE
+            CLOSEFILE
+
+        catch:
+            IOException
+
+    END readDataFromFile
+
+        
+
+    ACCESSOR: getLatitude
+    IMPORT: none
+    EXPORT: latitude (double [])
+    
+    Assertion: When called, the latitude class field will be called.
+    
+    Algorithm: 
+
+        return latitude
+
+    END latitude
+
+
+
+    ACCESSOR: getLongitude
+    IMPORT: none
+    EXPORT: longitude (double [])
+    
+    Assertion: When called, the longitude class field will be called.
+    
+    Algorithm: 
+
+        return longitude
+
+    END getLongitude
+
+
+
+    ACCESSOR: getCoordSys
+    IMPORT: none
+    EXPORT: coordSys (String [])
+    
+    Assertion: When called, the coordSys class field will be called.
+    
+    Algorithm: 
+
+        return coordSys
+
+    END getCoordSys
+    
+
+
+
+
+    MUTATOR: setLatitude
+    IMPORT: latitude (double [])
+    EXPORT: none
+    
+    Assertion: sets the value of the "latitude" variable to the provided array of strings.
+    
+    Algorithm: 
+
+        this.latitude = latitude
+
+    END setLatitude
+
+
+    MUTATOR: setLongitude
+    IMPORT: longitude (double [])
+    EXPORT: none
+    
+    Assertion: sets the value of the "longitude" variable to the provided array of strings.
+    
+    Algorithm: 
+
+        this.longitude = longitude
+
+    END setLongitude
+
+
+    MUTATOR: setCoordSys
+    IMPORT: coordSys (String [])
+    EXPORT: none
+    
+    Assertion: sets the value of the "coordSys" variable to the provided array of strings.
+    
+    Algorithm: 
+
+        this.coordSys = coordSys
+
+    END setCoordSys
+
+
+END PROJECT CLASS

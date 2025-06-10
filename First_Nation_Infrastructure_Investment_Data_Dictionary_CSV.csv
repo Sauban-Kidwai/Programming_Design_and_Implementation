@@ -1,0 +1,11 @@
+COLUMN NAME,FULL COLUMN NAME,DESCRIPTION,DATA TYPE
+PROV_TERR_EN,Province/Territory,Province/Territory in which the project is being carried out,Text
+BENEFICIARY_NAME_EN,Community,"The official departmental name of a band or translated name, as defined within the Indian Act",Text
+BENEFICIARY_BAND_NBR,Community Number,"A unique number (also referred to as the Band Number, Band Code, or Administrative Code) assigned to the First Nation by the Department",Text
+ASSET_CLASS_EN,Infrastructure Category,Indicates the category of infrastructure to which the project belongs,Text
+PROJECT_NAME_EN,Project Name,Name or title of the project,Text
+PROJECT_DESC_EN,Description,Description of the project,Text
+PROJECT_STAGE_EN,Project Status,Indicates if project is ongoing or completed,Text
+LATITUDE,Latitude,Latitude in decimal degrees,Number
+LONGITUDE,Longitude,Longitude in decimal degrees,Number
+COORD_SYS,Coordinate System,Coordinate system,Text

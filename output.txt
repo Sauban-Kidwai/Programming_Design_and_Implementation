@@ -1,0 +1,73 @@
+
+Welcome to the Investments in Indigenous community infrastructure Program. There are a total of 9037 projects throughout Canada. Please make a selection from the Menu below.
+
+
+> 1) All of Canada
+> 2) Alberta
+> 3) British Columbia
+> 4) Manitoba
+> 5) New Brunswick
+> 6) Newfoundland and Labrador
+> 7) Nova Scotia
+> 8) Ontario
+> 9) Prince Edward Island
+> 10) Quebec
+> 11) Saskatchewan
+> 12) Northwest Territories
+> 13) Nunavut
+> 14) Yukon
+> 15) Exit Program
+> Answer: 
+
+Please make a choice from the statistics below for Alberta
+
+> 1) Number of projects
+> 2) Percentage of all projects located in this province/territory
+> 3) Total number and percentage of Ongoing projects
+> 4) Total number and percentage of Completed projects
+> 5) All of the above statistics
+> 6) Return to main menu
+> Answer: 
+
+
+Number of projects in Alberta is 821
+
+
+Percentage of all projects located in Alberta is 9.08
+
+
+Total number and percentage of Ongoing projects in Alberta is 465 and 56.64 %
+
+
+Total number and percentage of Completed projects in Alberta is 356 and 43.36 %
+
+
+Please make a choice from the statistics below for Alberta
+
+> 1) Number of projects
+> 2) Percentage of all projects located in this province/territory
+> 3) Total number and percentage of Ongoing projects
+> 4) Total number and percentage of Completed projects
+> 5) All of the above statistics
+> 6) Return to main menu
+> Answer: 
+
+Welcome to the Investments in Indigenous community infrastructure Program. There are a total of 9037 projects throughout Canada. Please make a selection from the Menu below.
+
+
+> 1) All of Canada
+> 2) Alberta
+> 3) British Columbia
+> 4) Manitoba
+> 5) New Brunswick
+> 6) Newfoundland and Labrador
+> 7) Nova Scotia
+> 8) Ontario
+> 9) Prince Edward Island
+> 10) Quebec
+> 11) Saskatchewan
+> 12) Northwest Territories
+> 13) Nunavut
+> 14) Yukon
+> 15) Exit Program
+> Answer: 

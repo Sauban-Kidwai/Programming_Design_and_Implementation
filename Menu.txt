@@ -1,0 +1,69 @@
+CLASS MENU
+
+    START MAIN
+
+        selection = 0
+        programQuit = false
+
+        Scanner = new Scanner
+
+        IMPORT userInput = new UserInput
+
+        START WHILE
+
+            selection = userInput.IntroUserInput
+
+            START WHILE
+
+                WHILE programQuit is not True and selection is not 15 and selection is not 6
+
+                    START IF
+
+                        If selection = 1
+
+                            userInput.AllOfCanada
+
+                        Else If selection is greater than 2 and less than 15
+
+                            userInput.OtherInput(selection)
+
+                        Else
+
+                            PRINT TO USER "Wrong Choice. Please Try again
+
+
+                    END If
+
+
+
+                    START IF
+
+                        If selection does not = 6
+
+                            userInput.OtherInput(selection)
+
+                        Else
+
+                            selection = userInput.IntroUserInput
+
+                    END IF
+
+            END WHILE
+
+            START IF
+
+                If selection = 15
+
+                    programQuit = True
+
+                    PRINT TO USER "Exiting Program...."
+
+            END IF
+
+
+        Scanner Close 
+
+    END MAIN
+
+
+END MENU CLASS

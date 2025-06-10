@@ -1,0 +1,523 @@
+CLASS Project
+
+    CLASS FIELDS:
+
+        province (String [])
+        beneficiary (String [])
+        beneficiaryNum (String [])
+        assetClass (String [])
+        name (String [])
+        stage (String [])
+
+
+    ACCESSOR: readDataFromFile
+    IMPORT: filename (String)
+    EXPORT: none
+    Assertion: Method to read file and Parse contents to class fields.
+    Algorithm:
+
+        try:
+            theFile = OPENFILE filename
+            numRows = 0
+            READ Line FROM theFile
+            WHILENOT (theFile = EOF)
+                province = theFile[0]
+                beneficiary = theFile[1]
+                beneficiaryNum = theFile[2]
+                assetClass = theFile[3]
+                name = theFile[4]
+                stage = theFile[6]
+
+                numRows = numRows + 1
+
+            ENDWHILE
+            CLOSEFILE
+
+        catch:
+            IOException
+
+    END readDataFromFile
+
+
+    ACCESSOR: totalProjects
+    IMPORT: none
+    EXPORT: projects.length (Integer)
+    
+    Assertion: Method to parse through the rows in the file and return the total amount of projects in Canada
+    
+    Algorithm:
+
+        return length of province
+
+
+    END totalProjects
+
+
+
+
+    ACCESSOR: totalOngoing
+    IMPORT: none
+    EXPORT: totOngoing (Integer)
+    
+    Assertion: Method to Parse through the stage array to find all projects that are "Ongoing" and then returning that number
+    
+    Algorithm: 
+
+        totOngoing = 0
+        START FOR
+
+            For all elements in stage  
+
+                START IF
+                    If element = "Ongoing"
+
+                        totOngoing += 1
+                END IF
+
+        END FOR
+
+        return totOngoing
+
+    END totalOngoing
+
+
+
+    ACCESSOR: totalComp
+    IMPORT: none
+    EXPORT: totComp (Integer)
+    
+    Assertion: Method to Parse through the stage array to find all projects that are "Completed" and then returning that number
+    
+    Algorithm: 
+
+        totComp = 0
+        START FOR
+
+            For all elements in stage  
+
+                START IF
+                    If element = "Completed"
+
+                        totComp += 1
+                END IF
+
+        END FOR
+
+        return totComp
+
+    END totalComp
+
+        
+    ACCESSOR: compPercentage
+    IMPORT: none
+    EXPORT: percentage (double)
+    
+    Assertion: Method to Parse through the stage array to find all projects that are "completed" and then returning the percentage of completed projects
+    
+    Algorithm: 
+
+        totalProjects = Stage array Length
+        completedProjects = 0
+
+        START FOR
+
+            For all elements in stage  
+
+                START IF
+                    If element = "Completed"
+
+                        completedProjects += 1
+                END IF
+
+        END FOR
+
+        percentage = (completedProjects / totalProjects) * 100
+
+        return percentage
+
+    END totalOngoing
+
+
+
+    ACCESSOR: projectPercentage
+    IMPORT: provinceName (String)
+    EXPORT: percentage (double)
+    
+    Assertion: Method to Parse through the stage array to find all projects that have a specific name (province name) and then returning that as a percentage
+    
+    Algorithm: 
+
+        count = 0
+
+        START FOR
+
+            For all elements in province.length  
+
+                START IF
+                    If element = "provinceName"
+
+                        count += 1
+                END IF
+        END FOR
+
+        percentage = (count / province length) * 100
+
+        return percentage
+
+    END projectPercentage
+
+
+
+
+    ACCESSOR: countProjectsInProvince
+    IMPORT: provinceName (String)
+    EXPORT: count (Integer)
+    
+    Assertion: Method to Parse through the stage array to find all projects that have a specific name (province name) and then returning that as a number
+    
+    Algorithm: 
+
+        count = 0
+
+        START FOR
+
+            For all elements in province.length  
+
+                START IF
+                    If element = "provinceName"
+
+                        count += 1
+                END IF
+        END FOR
+
+        return count
+
+    END countProjectsInProvince
+
+
+
+
+    ACCESSOR: ongoingPercentage
+    IMPORT: provinceName (String)
+    EXPORT: percentage (double)
+    
+    Assertion: Method to Parse through the stage array to find all projects that have a specific name (province name) and then returning the percentage of "Ongoing" projects against the total in that province
+    
+    Algorithm: 
+
+        totalProjects = 0
+        ongoingProjects = 0
+
+        START FOR
+
+            For all elements in province.length  
+
+                START IF
+                    If element = "provinceName"
+
+                        totalProjects += 1
+
+                        START IF
+
+                            If stage = "Ongoing"
+
+                            ongoingProjects += 1
+
+                        END IF
+
+                END IF
+
+        END FOR
+
+        percentage = (ongoingPercentage / totalProjects) * 100
+
+        return percentage
+
+    END ongoingPercentage
+
+
+
+
+    ACCESSOR: ongoingNumber
+    IMPORT: provinceName (String)
+    EXPORT: ongoingProjects (Integer)
+    
+    Assertion: Method to Parse through the stage array to find all projects that have a specific name (province name) and then returning the count of how many of those provinces have "Ongoing" projects.
+    
+    Algorithm: 
+
+        ongoingProjects = 0
+
+        START FOR
+
+            For all elements in province.length  
+
+                START IF
+                    If element = "provinceName"
+
+                        totalProjects += 1
+
+                        START IF
+
+                            If stage = "Ongoing"
+
+                            ongoingProjects += 1
+
+                        END IF
+
+                END IF
+
+        END FOR
+
+        return ongoingProjects
+
+
+    END ongoingNumber
+
+
+
+
+
+    ACCESSOR: completedPercentage
+    IMPORT: provinceName (String)
+    EXPORT: percentage (double)
+    
+    Assertion: Method to Parse through the stage array to find all projects that have a specific name (province name) and then returning the percentage of "Completed" projects against the total in that province
+    
+    Algorithm: 
+
+        totalProjects = 0
+        completedProjects = 0
+
+        START FOR
+
+            For all elements in province.length  
+
+                START IF
+                    If element = "provinceName"
+
+                        totalProjects += 1
+
+                        START IF
+
+                            If stage = "Completed"
+
+                            ongoingProjects += 1
+
+                        END IF
+
+                END IF
+
+        END FOR
+
+        percentage = (completedProjects / totalProjects) * 100
+
+        return percentage
+
+    END completedPercentage
+
+
+
+
+    ACCESSOR: completedNumber
+    IMPORT: provinceName (String)
+    EXPORT: completedProjects (Integer)
+    
+    Assertion: Method to Parse through the stage array to find all projects that have a specific name (province name) and then returning the count of how many of those provinces have "Completed" projects.
+    
+    Algorithm: 
+
+        ongoingProjects = 0
+
+        START FOR
+
+            For all elements in province.length  
+
+                START IF
+                    If element = "provinceName"
+
+                        totalProjects += 1
+
+                        START IF
+
+                            If stage = "Completed"
+
+                            ongoingProjects += 1
+
+                        END IF
+
+                END IF
+
+        END FOR
+
+        return completedProjects
+
+
+    END completedNumber
+        
+
+    ACCESSOR: getProvince
+    IMPORT: none
+    EXPORT: province (String [])
+    
+    Assertion: When called, the province class field will be called.
+    
+    Algorithm: 
+
+        return province
+
+    END getProvince
+
+
+
+    ACCESSOR: getBeneficiary
+    IMPORT: none
+    EXPORT: beneficiary (String [])
+    
+    Assertion: When called, the beneficiary class field will be called.
+    
+    Algorithm: 
+
+        return beneficiary
+
+    END getBeneficiary
+
+
+
+    ACCESSOR: getBeneficiaryNum
+    IMPORT: none
+    EXPORT: beneficiaryNum (String [])
+    
+    Assertion: When called, the beneficiaryNum class field will be called.
+    
+    Algorithm: 
+
+        return beneficiaryNum
+
+    END getBeneficiaryNum
+    
+
+
+    ACCESSOR: getAssetClass
+    IMPORT: none
+    EXPORT: assetClass (String [])
+    
+    Assertion: When called, the assetClass class field will be called.
+    
+    Algorithm: 
+
+        return assetClass
+
+    END getAssetClass
+
+
+
+    ACCESSOR: getName
+    IMPORT: none
+    EXPORT: name (String [])
+    
+    Assertion: When called, the name class field will be called.
+    
+    Algorithm: 
+
+        return name
+
+    END getName
+
+
+
+    ACCESSOR: getStage
+    IMPORT: none
+    EXPORT: stage (String [])
+    
+    Assertion: When called, the stage class field will be called.
+    
+    Algorithm: 
+
+        return stage
+
+    END getStage
+
+
+
+
+
+    MUTATOR: setProvince
+    IMPORT: province (String [])
+    EXPORT: none
+    
+    Assertion: sets the value of the "province" variable to the provided array of strings.
+    
+    Algorithm: 
+
+        this.province = province
+
+    END setProvince
+
+
+    MUTATOR: setBeneficiary
+    IMPORT: beneficiary (String [])
+    EXPORT: none
+    
+    Assertion: sets the value of the "beneficiary" variable to the provided array of strings.
+    
+    Algorithm: 
+
+        this.beneficiary = beneficiary
+
+    END setBeneficiary
+
+
+    MUTATOR: setBeneficiaryNum
+    IMPORT: beneficiaryNum (String [])
+    EXPORT: none
+    
+    Assertion: sets the value of the "beneficiaryNum" variable to the provided array of strings.
+    
+    Algorithm: 
+
+        this.beneficiaryNum = beneficiaryNum
+
+    END setBeneficiaryNum
+
+
+    MUTATOR: setAssetClass
+    IMPORT: assetClass (String [])
+    EXPORT: none
+    
+    Assertion: sets the value of the "assetClass" variable to the provided array of strings.
+    
+    Algorithm: 
+
+        this.assetClass = assetClass
+
+    END setAssetClass
+
+
+    MUTATOR: setName
+    IMPORT: name (String [])
+    EXPORT: none
+    
+    Assertion: sets the value of the "name" variable to the provided array of strings.
+    
+    Algorithm: 
+
+        this.name = name
+
+    END setName
+
+
+    MUTATOR: setStage
+    IMPORT: stage (String [])
+    EXPORT: none
+    
+    Assertion: sets the value of the "stage" variable to the provided array of strings.
+    
+    Algorithm: 
+
+        this.stage = stage
+
+    END setProvince
+
+
+END PROJECT CLASS
